@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import product from '../../assets/img/products/product-grey-7.jpg'
 import * as actionType from '../../store/actions';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom'

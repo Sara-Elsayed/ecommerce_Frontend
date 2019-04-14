@@ -1,7 +1,5 @@
 import React,{Component} from 'react';
-import personalImage from '../../assets/img/PersonalImage.png';
-import logo from '../../assets/img/logo.png';
-import bag from '../../assets/img/icons/icon-cart-big.svg';
+
 // import AddProduct from '../addProduct/addProduct';
 
 import {NavLink} from 'react-router-dom';
@@ -27,10 +25,8 @@ class Header extends Component{
                )       
         }else{
             pack =(
-                <div className="image image--small" style={{backgroundImage: `url(${bag})`}}>
-                        <div className="notification notification--danger">
-                            1
-                        </div>
+                <div className="Link">
+                        Log Out
                     </div>
             )
         }
@@ -64,9 +60,6 @@ class Header extends Component{
         </div>
     </div>
     <div className="header__middle container">
-        <a href="#" className="header__logo-box">
-            <img className="header__logo" src={logo} alt=""/>
-        </a>
             <div className="header__user-options">
             <div className="dropdown">
                 <div className="dropdown__header">
