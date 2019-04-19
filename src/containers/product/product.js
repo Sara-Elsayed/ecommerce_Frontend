@@ -7,12 +7,18 @@ class Product extends Component {
 	
 	render() {
 		let deletepro= null;
+		let editpro = null ;
 		if (this.props.product.userid === localStorage.getItem('userid')){
 			deletepro = (
 				<a onClick={() => this.props.deleteProduct(this.props.product.id)}>
 							<i className="fas fa-trash-alt" />
 						</a>
 			);
+			editpro = (
+				<a onClick={()=>this.props.editProduct(this.props.product.id)}>
+						<i className="fas fa-edit" />
+					</a>
+			)
 		}
 		let price = (<div>
 			<span className="lable">${this.props.product.price}</span>
@@ -51,6 +57,7 @@ class Product extends Component {
 						<i className="far fa-eye" />
 					</NavLink>
 					{deletepro}
+					{editpro}
 				</div>
 			</div>
 		);
@@ -58,8 +65,8 @@ class Product extends Component {
 }
 const mapDispatchToProps = (dispatch) => {
 	return {
-		deleteProduct: (prdctid) => dispatch( actionTypes.removeProductFromList(prdctid))
-
+		deleteProduct: (prdctid) => dispatch( actionTypes.removeProductFromList(prdctid)),
+		editProduct:(prdctid) => dispatch(actionTypes.editProductDetails(prdctid))
 	};
 };
 export default connect(null, mapDispatchToProps)(Product);

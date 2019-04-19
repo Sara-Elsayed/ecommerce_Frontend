@@ -7,6 +7,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
 	const productsArray = [...state.products];
+	
 	switch (action.type) {
 		case actionTypes.GETALL:
 			const newArray = [];
@@ -33,8 +34,9 @@ const reducer = (state = initialState, action) => {
 			 return{
 				 ...state,
 				 selectedProduct: action.product
-			 }
-			 case actionTypes.REMOVE_PRODUCT:
+			 };
+
+			case actionTypes.REMOVE_PRODUCT:
 			const index = productsArray.findIndex(p => p.id === action.product._id)
 			 if(index > -1)
 			{
@@ -44,12 +46,22 @@ const reducer = (state = initialState, action) => {
 				...state,
 				products: productsArray
 			};
+
 			case actionTypes.ADD_PRODUCT:
 			let productsCopy = [...state.products];
 			productsCopy.push(action.product);
 			return{
 				...state,
 				products:productsCopy,
+			};
+
+			case actionTypes.EDIT_PRODUCT:
+			const ind = productsArray.findIndex(p=> p.id === action.product._id);
+			if (ind > -1){
+				
+			}
+			return{
+
 			}
 		default:
 			return state;

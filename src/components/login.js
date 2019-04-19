@@ -8,8 +8,8 @@ class LoginPage extends Component{
           username: { value: username },
           password: { value: password },
         } = e.target.elements;
-        const res = await login({ username, password})
-        // .then(res => this.props.history.push('/'));
+        const res = await login({ username, password});
+        // .then(re => this.props.history.push('/'));
         localStorage.setItem('token',res.token);
         localStorage.setItem('userid',res.user._id)
       }

@@ -5,12 +5,21 @@ import React,{Component} from 'react';
 import {NavLink} from 'react-router-dom';
 
 class Header extends Component{
+    logoutHandler = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userid')
+        window.location.reload()
+      }
     render(){
         let myproducts= null;
+        let addproducttab = null;
 		if (localStorage.getItem('token')){
 			myproducts = (
 				<NavLink className="nav__link" to={`user/${localStorage.getItem('userid')}`} exact>My Products</NavLink>			
-			);
+            );
+            addproducttab =(
+                <NavLink to="/addProduct" exact className="nav__inner-link" >Add Product</NavLink>
+            );
         }
         let cred = null ;
         let pack = null ;
@@ -26,7 +35,7 @@ class Header extends Component{
         }else{
             pack =(
                 <div className="Link">
-                        Log Out
+                    <NavLink onClick={this.logoutHandler} to='/' exact className="link">Log out</NavLink> 
                     </div>
             )
         }
@@ -137,10 +146,10 @@ class Header extends Component{
                     <div className="dropdown__body">
                         <ul className=" list">
                             <li className="list__item">
-                                <a className="nav__inner-link" href="#">Product Listing</a>
+                                <NavLink  to="/" exact className="nav__inner-link" >Product Listing</NavLink>
                             </li>
                             <li className="list__item">
-                                <NavLink to="/addProduct" exact className="nav__inner-link" >Add Product</NavLink>
+                                {addproducttab}
                             </li>
                         </ul>
                     </div>
